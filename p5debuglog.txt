@@ -1,0 +1,97 @@
+ 
+ gcc -g p5original.c
+ ./a.out
+enter the first number:
+45
+enter the second number:
+36
+enter the third number:
+87
+the biggest of 45 ,36 and 87 is 87  
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x879: file p5original.c, line 31.
+(gdb) r
+Starting program: /home/runner/pps-test1-6/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p5original.c:31
+31  {
+(gdb) s
+33    input(&a1,&a2,&a3);
+(gdb) s
+input (a=0x7ffec9c4a848, b=0x7ffec9c4a84c, c=0x7ffec9c4a850)
+    at p5original.c:4
+4     printf("enter the first number:\n");
+(gdb) n
+enter the first number:
+5     scanf("%d",a);
+(gdb) n
+46
+6     printf("enter the second number:\n");
+(gdb) n
+enter the second number:
+7     scanf("%d",b);
+(gdb) n
+85
+8     printf("enter the third number:\n");
+(gdb) n
+enter the third number:
+9     scanf("%d",c);
+(gdb) n
+65
+10  }
+(gdb) n
+main () at p5original.c:34
+34    cmp(a1,a2,a3,& large);
+(gdb) s
+cmp (a=46, b=85, c=65, large=0x7ffec9c4a854) at p5original.c:13
+13    if(a>b && a>c)
+(gdb) n
+17    else if (b>c)
+(gdb) n
+19      *large=b;
+(gdb) n
+25  }
+(gdb) n
+main () at p5original.c:35
+35    output(a1,a2,a3,large);
+(gdb) s
+output (a=46, b=85, c=65, large=85) at p5original.c:28
+28      printf("the biggest of %d ,%d and %d is %d  \n",a,b,c,large);
+(gdb) n
+the biggest of 46 ,85 and 65 is 85  
+29  }
+(gdb) n
+main () at p5original.c:36
+36    return 0;
+(gdb) n
+37  }
+(gdb) n
+__libc_start_main (main=0x55b324600871 <main>, argc=1, 
+    argv=0x7ffec9c4a948, init=<optimized out>, fini=<optimized out>, 
+    rtld_fini=<optimized out>, stack_end=0x7ffec9c4a938)
+    at ../csu/libc-start.c:344
+344 ../csu/libc-start.c: No such file or directory.
+(gdb) q
+A debugging session is active.
+
+    Inferior 1 [process 186] will be killed.
+
+Quit anyway? (y or n) y
+ 
