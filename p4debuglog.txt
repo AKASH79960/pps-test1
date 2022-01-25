@@ -1,0 +1,121 @@
+ 
+ gcc -g p4original.c
+ ./a.out
+enter a number
+44
+enter a number
+55
+enter a number
+11
+b is largest among 44,55 and 11 
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x886: file p4original.c, line 33.
+(gdb) r
+Starting program: /home/runner/pps-test1-6/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p4original.c:33
+33    a = input();
+(gdb) s
+input () at p4original.c:4
+4   {
+(gdb) n
+6     printf("enter a number\n");
+(gdb) n
+enter a number
+7     scanf("%d",&a);
+(gdb) n
+44
+8     return a;
+(gdb) n
+9   }
+(gdb) n
+main () at p4original.c:34
+34    b = input();
+(gdb) s
+input () at p4original.c:4
+4   {
+(gdb) n
+6     printf("enter a number\n");
+(gdb) n
+enter a number
+7     scanf("%d",&a);
+(gdb) n
+55
+8     return a;
+(gdb) n
+9   }
+(gdb) n
+main () at p4original.c:35
+35    c = input();
+(gdb) s
+input () at p4original.c:4
+4   {
+(gdb) n
+6     printf("enter a number\n");
+(gdb) n
+enter a number
+7     scanf("%d",&a);
+(gdb) n
+11
+8     return a;
+(gdb) n
+9   }
+(gdb) n
+main () at p4original.c:36
+36    largest = cmp(a,b,c,largest);
+(gdb) s
+cmp (a=44, b=55, c=11, largest=0) at p4original.c:12
+12    if (a>b && b>c)
+(gdb) n
+14    else if(b>a && b>c )
+(gdb) n
+15    return 2;
+(gdb) n
+18  }
+(gdb) n
+main () at p4original.c:37
+37    output(a,b,c,largest);
+(gdb) s
+output (a=44, b=55, c=11, largest=2) at p4original.c:22
+22    if (largest == 1)
+(gdb) n
+24    else if (largest == 2)
+(gdb) n
+25    printf("b is largest among %d,%d and %d",a,b,c);
+(gdb) n
+28  }
+(gdb) s
+main () at p4original.c:38
+38    return 0;
+(gdb) s
+39  }(gdb) s
+__libc_start_main (main=0x55e44c60087e <main>, argc=1, 
+    argv=0x7fff5803da88, init=<optimized out>, fini=<optimized out>, 
+    rtld_fini=<optimized out>, stack_end=0x7fff5803da78)
+    at ../csu/libc-start.c:344
+344 ../csu/libc-start.c: No such file or directory.
+(gdb) p a
+No symbol "a" in current context.
+(gdb) p int a
+A syntax error in expression, near `a'.
+(gdb) p int aQuit
+(gdb) Quit
+(gdb) Quit
+(gdb) 
