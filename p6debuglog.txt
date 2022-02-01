@@ -1,0 +1,157 @@
+gcc -g p6original.c
+ ./a.out
+To Find Sum Of 'n' Numbers
+Enter Value Of n
+7
+The sum of frist 7 numbers is 
+ 0+ 1+  2+  3+  4+  5+  6+  7   = 28
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x87e: file p6original.c, line 36.
+(gdb) r
+Starting program: /home/runner/pps-test1-GANESH2903-2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p6original.c:36
+36    n = input_n();
+(gdb) s
+input_n () at p6original.c:4
+4   {
+(gdb) n
+6     printf("To Find Sum Of 'n' Numbers\n");
+(gdb) n
+To Find Sum Of 'n' Numbers
+7     printf("Enter Value Of n\n");
+(gdb) n
+Enter Value Of n
+8     scanf("%d",&n);
+(gdb) n
+7
+9     return n;
+(gdb) n
+10  }
+(gdb) n
+main () at p6original.c:37
+37    sum = sum_n(n);
+(gdb) s
+sum_n (n=7) at p6original.c:14
+14    int i,sum=0;
+(gdb) n
+15    for(i=0;i<=n;i++)
+(gdb) p sum
+$1 = 0
+(gdb) n
+17      sum = sum + i;
+(gdb) p i
+$2 = 0
+(gdb) n
+15    for(i=0;i<=n;i++)
+(gdb) p sum
+$3 = 0
+(gdb) n
+17      sum = sum + i;
+(gdb) p i
+$4 = 1
+(gdb) n
+15    for(i=0;i<=n;i++)
+(gdb) p sum
+$5 = 1
+(gdb) n
+17      sum = sum + i;
+(gdb) p i
+$6 = 2
+(gdb) n
+15    for(i=0;i<=n;i++)
+(gdb) p sum
+$7 = 3
+(gdb) n
+17      sum = sum + i;
+(gdb) p i
+$8 = 3
+(gdb) n
+15    for(i=0;i<=n;i++)
+(gdb) p sum
+$9 = 6
+(gdb) n
+17      sum = sum + i;
+(gdb) p i
+$10 = 4
+(gdb) n
+15    for(i=0;i<=n;i++)
+(gdb) p sum
+$11 = 10
+(gdb) n
+17      sum = sum + i;
+(gdb) p i
+$12 = 5
+(gdb) n
+15    for(i=0;i<=n;i++)
+(gdb) p sum
+$13 = 15
+(gdb) n
+17      sum = sum + i;
+(gdb) p i
+$14 = 6
+(gdb) n
+15    for(i=0;i<=n;i++)
+(gdb) p sum
+$15 = 21
+(gdb) n
+17      sum = sum + i;
+(gdb) p i
+$16 = 7
+(gdb) n
+15    for(i=0;i<=n;i++)
+(gdb) p sum
+$17 = 28
+(gdb) n
+19    return sum;
+(gdb) n
+20  }
+(gdb) n
+main () at p6original.c:38
+38    output (n,sum);
+(gdb) s
+output (n=7, sum=28) at p6original.c:24
+24    printf("The sum of frist %d numbers is \n ",n);
+(gdb) n
+The sum of frist 7 numbers is 
+26    for(i=0;i<n;i++)
+(gdb) n
+27    printf("%d+\t",i);
+gdb) n
+26    for(i=0;i<n;i++)
+(gdb) n
+27    printf("%d+\t",i);
+(gdb) n
+26    for(i=0;i<n;i++)
+(gdb) n
+27    printf("%d+\t",i);
+(gdb) n
+26    for(i=0;i<n;i++)
+(gdb) n
+27    printf("%d+\t",i);
+(gdb) n
+26    for(i=0;i<n;i++)
+(gdb) s
+27    printf("%d+\t",i);
+(gdb) n
+26    for(i=0;i<n;i++)
+(gdb) p sum
+$18 = 28
+(gdb) Quit
